@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Recipes{% endblock title %}
+
+{% block body %}
+
+<div class="container mt-5">
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1 style="font-weight: bolder;font-size: 35px;">UPDATE RECIPE</h1> 
+    <hr>
+        <div class="mb-3">
+          <label for="recipename" class="form-label">Recipe Name</label>
+          <input type="text" class="form-control" name="recipe_name" value="{{recipe.recipe_name}}" required>
+        </div>
+        <div class="mb-3">
+          <label for="recipeDescription" class="form-label">Recipe Description</label>
+          <textarea class="form-control" name="recipe_description">{{recipe.recipe_description}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="recipeImage" class="form-label">Recipe Image</label>
+            <input type="file" name="recipe_image" class="form-control">
+          </div>
+        <button type="submit" class="btn btn-success">Update Recipe</button>
+      </form>
+</div>
+
+{% endblock body %}
